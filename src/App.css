@@ -3,8 +3,8 @@ body,html{
   padding: 0;
   min-width: 100%;
   min-height: 100vh;
-  background-color: #F2F2F2;
-  
+  background: rgb(253,187,45);
+  background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
 }
 h1{
   color: #333333;
@@ -28,8 +28,8 @@ h1{
   min-height: 500px;
   padding: 25px;
   border-radius: 8px;
-  border: 1px solid #CCCCCC;
   box-shadow:  0 0 10px rgba(37, 38, 40, 0.3);
+  background-color: rgba(0, 45, 47, 0.8);
 }
 
 .form form{
@@ -58,7 +58,7 @@ button{
   padding: 8px 16px;
   height: 42px;
   width: 80px;
-  background-color: #007BFF;
+  background-color: #22c1c3;
   border: none;
   color: #FFFFFF;
   border-radius: 8px;
@@ -96,7 +96,7 @@ button{
   cursor: pointer;
   padding: 10px;
   border: 1px solid rgba(255,255,255,0.3);
-  background-color: #007BFF;
+  background-color: #22c1c3;
   color: #fffefe;
   border-radius: 5px;
   font-size: 16px;
@@ -113,17 +113,13 @@ button{
 }
 
 .check{
-  border: 1px solid rgba(0,0,0,0.3);
   float: right;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: default;
   font-size: 16px;
 }
-.check_on{
-  display: block;
-  font-size: 16px;
-}
-.check_off{
-  display: none;
+.delete{
+  color: rgba(0, 45, 47, 1);
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 import './App.css';
-import { AiOutlineCheck } from 'react-icons/ai';
+import { AiFillDelete } from "react-icons/ai";
+
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,12 +18,12 @@ const App = () => {
     setTaskClasses({ ...taskClasses, [newId]: 'li_on' });
     setTaskVisibility({ ...taskVisibility, [newId]: false }); // Agregar visibilidad inicial como false
     event.target.elements.taskInput.value = '';
-    Swal.fire({
-      title: 'Success!',
-      text: `Task (${newTask.text}) added!`,
-      icon: 'success',
-      confirmButtonText: 'Cool'
-    });
+    /*     Swal.fire({
+          title: 'Success!',
+          text: `Task (${newTask.text}) added!`,
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        }); */
   };
 
   const handleTaskClick = (taskId) => {
@@ -40,10 +41,21 @@ const App = () => {
     updatedVisibility[taskId] = !updatedVisibility[taskId]; // Invertir el estado de visibilidad
     setTaskVisibility(updatedVisibility);
   };
+  const deleteTask = (taskId) => {
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
+    const updatedClasses = { ...taskClasses };
+    delete updatedClasses[taskId];
+    setTaskClasses(updatedClasses);
+    const updatedVisibility = { ...taskVisibility };
+    delete updatedVisibility[taskId];
+    setTaskVisibility(updatedVisibility);
+  };
+  
 
   return (
     <main className='container_app'>
-      <h1>To Do List</h1>
+      <h1>ToDo List</h1>
       <div className='container_to-do'>
         <section className='form'>
           <form onSubmit={addTask}>
@@ -61,9 +73,9 @@ const App = () => {
               >
                 - {task.text}{' '}
                 <div className='check'>
-                  <AiOutlineCheck
-                    onClick={() => handleCheckClick(task.id)}
-                    className={taskVisibility[task.id] ? 'check_on' : 'check_off'}
+                  <AiFillDelete
+                    onClick={() => deleteTask(task.id)}
+                    className='delete'
                   />
                 </div>
               </li>
